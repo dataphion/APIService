@@ -18,7 +18,7 @@ ENV DEBUG ${DEBUG}
 
 RUN env
 
-COPY ./frontend /app
+COPY ./Portal /app
 RUN rm -rf node_modules package-lock.json
 RUN npm install
 
@@ -28,18 +28,13 @@ RUN npm run build
 
 FROM strapi/base
 
-RUN mkdir /srv/executor
-WORKDIR /srv/executor
+RUN mkdir /srv/FlowExecutor
+WORKDIR /srv/FlowExecutor
 
-COPY ./executor .
+COPY ./FlowExecutor .
 RUN ls
 RUN npm install
 RUN npm install -g protractor
-
-RUN mkdir -p /opt/images
-WORKDIR /opt
-RUN ln -s /opt/images/ p_images
-
 
 RUN mkdir /srv/api && chown 1000:1000 -R /srv/api
 WORKDIR /srv/api
@@ -49,7 +44,10 @@ VOLUME /srv/api
 # RUN ["chmod", "+x", "/usr/local/bin/docker-entrypoint.sh"]
 
 
-# frontend
+# Portal
+RUN mkdir -p /opt/images
+RUN ln -s /opt/images/ p_images
+
 RUN \
     apt-get update && \
     apt-get install -y nginx && \
@@ -58,7 +56,7 @@ RUN \
     chown -R www-data:www-data /var/lib/nginx
 
 COPY --from=build /app/dist /usr/share/nginx/html/dist
-COPY ./frontend/nginx.conf /etc/nginx/sites-enabled/default
+COPY ./Portal/nginx.conf /etc/nginx/sites-enabled/default
 
 ENV NODE_ENV production
 
