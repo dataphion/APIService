@@ -1,0 +1,51 @@
+{
+  "name": "cms",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "@buffetjs/custom": "^2.0.0",
+    "amqplib": "0.5.3",
+    "async-redis": "^1.1.7",
+    "axios": "^0.19.2",
+    "deep-diff": "^1.0.2",
+    "json-schema-ref-parser": "^7.1.1",
+    "knex": "<0.20.0",
+    "lodash": "^4.17.5",
+    "mongodb": "^3.4.1",
+    "mssql": "^6.0.1",
+    "mysql2": "^1.6.5",
+    "oracledb": "4.1.0",
+    "pg": "latest",
+    "socket.io": "^2.3.0",
+    "strapi": "3.1.1",
+    "strapi-admin": "3.1.1",
+    "strapi-connector-bookshelf": "3.1.1",
+    "strapi-plugin-content-manager": "3.1.1",
+    "strapi-plugin-content-type-builder": "3.1.1",
+    "strapi-plugin-email": "3.1.1",
+    "strapi-plugin-graphql": "3.1.1",
+    "strapi-plugin-upload": "3.1.1",
+    "strapi-plugin-users-permissions": "3.1.1",
+    "strapi-utils": "3.1.1",
+    "swagger-parser": "^8.0.0"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "390b9b1a-55b2-414d-a7b8-e5555da71237"
+  },
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,178 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "objectrepository",
+  "info": {
+    "name": "objectrepository",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "url": {
+      "type": "text"
+    },
+    "alias_name": {
+      "type": "string"
+    },
+    "page_url": {
+      "type": "text"
+    },
+    "thumbnail_url": {
+      "type": "text"
+    },
+    "highlighted_image_url": {
+      "type": "text"
+    },
+    "horizontal_anchor_text": {
+      "type": "text"
+    },
+    "vertical_anchor_text": {
+      "type": "text"
+    },
+    "object_by_lable": {
+      "type": "string"
+    },
+    "action": {
+      "type": "string"
+    },
+    "element_type": {
+      "type": "string"
+    },
+    "element_label": {
+      "type": "string"
+    },
+    "element_id": {
+      "type": "string"
+    },
+    "element_value": {
+      "type": "string"
+    },
+    "element_css": {
+      "type": "string"
+    },
+    "element_health": {
+      "type": "string"
+    },
+    "element_attributes": {
+      "type": "json"
+    },
+    "element_snapshot": {
+      "type": "text"
+    },
+    "nlu": {
+      "type": "json"
+    },
+    "tag": {
+      "type": "string"
+    },
+    "protocol": {
+      "type": "string"
+    },
+    "query_parameters": {
+      "type": "json"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "x_cord": {
+      "type": "integer"
+    },
+    "y_cord": {
+      "type": "integer"
+    },
+    "height": {
+      "type": "integer"
+    },
+    "width": {
+      "type": "integer"
+    },
+    "placeholder": {
+      "type": "string"
+    },
+    "base_image": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "parent_x_cord": {
+      "type": "integer"
+    },
+    "parent_y_cord": {
+      "type": "integer"
+    },
+    "parent_element_attributes": {
+      "type": "json"
+    },
+    "element_xpaths": {
+      "type": "json"
+    },
+    "best_match": {
+      "type": "text"
+    },
+    "frame": {
+      "type": "string"
+    },
+    "fileupload_url": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "description": {
+      "type": "text"
+    },
+    "value": {
+      "type": "text"
+    },
+    "timeout": {
+      "type": "integer"
+    },
+    "expected_condition": {
+      "type": "string"
+    },
+    "testcasecomponents": {
+      "collection": "testcasecomponent",
+      "via": "objectrepository"
+    },
+    "custom_attributes": {
+      "type": "json"
+    },
+    "flowsteps": {
+      "collection": "flowsteps",
+      "via": "objectrepository"
+    },
+    "browser_width": {
+      "type": "biginteger"
+    },
+    "browser_height": {
+      "type": "biginteger"
+    },
+    "x_scroll": {
+      "type": "biginteger"
+    },
+    "y_scroll": {
+      "type": "biginteger"
+    },
+    "pixel_ratio": {
+      "type": "float"
+    },
+    "current_tab": {
+      "type": "integer"
+    },
+    "grid_data": {
+      "type": "json"
+    },
+    "grid_pagination_xpath": {
+      "type": "string"
+    }
+  }
+}

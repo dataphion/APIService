@@ -1,0 +1,79 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "application",
+  "info": {
+    "name": "application",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "url": {
+      "type": "text"
+    },
+    "dbregistrations": {
+      "collection": "dbregistration",
+      "via": "application"
+    },
+    "environments": {
+      "collection": "environments",
+      "via": "application"
+    },
+    "testsuites": {
+      "collection": "testsuites",
+      "via": "application"
+    },
+    "testcasegroups": {
+      "collection": "testcasegroup",
+      "via": "application"
+    },
+    "endpointpacks": {
+      "collection": "endpointpack",
+      "via": "application"
+    },
+    "sourceregistrations": {
+      "collection": "sourceregistration",
+      "via": "application"
+    },
+    "healedcomponents": {
+      "collection": "healedcomponent",
+      "via": "application"
+    },
+    "relationgraphs": {
+      "via": "application",
+      "collection": "relationgraph"
+    },
+    "features": {
+      "collection": "feature",
+      "via": "application"
+    },
+    "description": {
+      "type": "text"
+    },
+    "testcases": {
+      "via": "application",
+      "collection": "testcase"
+    },
+    "smtpdetail": {
+      "via": "application",
+      "model": "smtpdetails"
+    },
+    "user": {
+      "via": "applications",
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "current_tab": {
+      "type": "integer"
+    },
+    "selenium_configure": {
+      "via": "application",
+      "model": "selenium-configure"
+    }
+  }
+}

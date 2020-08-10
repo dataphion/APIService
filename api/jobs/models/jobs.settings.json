@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "jobs",
+  "info": {
+    "name": "jobs"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "status": {
+      "type": "string"
+    },
+    "pending": {
+      "type": "string"
+    },
+    "testsessionexecution": {
+      "via": "jobs",
+      "model": "testsessionexecution"
+    }
+  }
+}

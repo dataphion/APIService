@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "endpointpack",
+  "info": {
+    "name": "endpointpack",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "upload_type": {
+      "type": "string"
+    },
+    "host_url": {
+      "type": "string"
+    },
+    "swagger_url": {
+      "type": "string"
+    },
+    "endpoints": {
+      "collection": "endpoints",
+      "via": "endpointpack"
+    },
+    "application": {
+      "via": "endpointpacks",
+      "model": "application"
+    }
+  }
+}

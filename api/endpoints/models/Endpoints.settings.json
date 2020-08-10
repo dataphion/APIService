@@ -1,0 +1,68 @@
+{
+  "connection": "default",
+  "collectionName": "endpoints",
+  "info": {
+    "name": "endpoints",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "endpoint": {
+      "default": "",
+      "type": "string"
+    },
+    "method": {
+      "default": "",
+      "type": "string"
+    },
+    "description": {
+      "default": "",
+      "type": "text"
+    },
+    "responses": {
+      "default": "",
+      "type": "json"
+    },
+    "tags": {
+      "default": "",
+      "type": "json"
+    },
+    "consumes": {
+      "default": "",
+      "type": "json"
+    },
+    "produces": {
+      "default": "",
+      "type": "json"
+    },
+    "summary": {
+      "default": "",
+      "type": "text"
+    },
+    "parameters": {
+      "default": "",
+      "type": "json"
+    },
+    "endpointrefs": {
+      "collection": "endpointref",
+      "via": "endpoint"
+    },
+    "endpointpack": {
+      "model": "endpointpack",
+      "via": "endpoints"
+    },
+    "flows": {
+      "collection": "flow",
+      "via": "endpoints",
+      "dominant": true
+    },
+    "conflict": {
+      "type": "boolean"
+    },
+    "conflict_message": {
+      "type": "text"
+    }
+  }
+}

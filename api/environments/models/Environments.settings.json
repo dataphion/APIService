@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "environment",
+  "info": {
+    "name": "environments",
+    "description": "Environment specific details for the application. Eg. Dev/QA/Stage/Production"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "urls": {
+      "type": "json"
+    },
+    "dbregistrations": {
+      "collection": "dbregistration",
+      "via": "environments"
+    },
+    "application": {
+      "via": "environments",
+      "model": "application"
+    }
+  }
+}

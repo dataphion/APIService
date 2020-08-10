@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "healedcomponents",
+  "info": {
+    "name": "healedcomponent",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "heal_count": {
+      "type": "integer"
+    },
+    "vision_count": {
+      "type": "integer"
+    },
+    "application": {
+      "via": "healedcomponents",
+      "model": "application"
+    }
+  }
+}

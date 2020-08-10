@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/smtpdetails",
+      "handler": "smtpdetails.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/smtpdetails/count",
+      "handler": "smtpdetails.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/smtpdetails/:id",
+      "handler": "smtpdetails.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/smtpdetails",
+      "handler": "smtpdetails.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/smtpdetails/:id",
+      "handler": "smtpdetails.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/smtpdetails/:id",
+      "handler": "smtpdetails.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

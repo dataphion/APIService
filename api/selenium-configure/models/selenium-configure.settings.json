@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "selenium_configures",
+  "info": {
+    "name": "SeleniumConfigure"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "host": {
+      "type": "string"
+    },
+    "port": {
+      "type": "string"
+    },
+    "application": {
+      "model": "application",
+      "via": "selenium_configure"
+    },
+    "user": {
+      "via": "selenium_configure",
+      "plugin": "users-permissions",
+      "model": "user"
+    }
+  }
+}

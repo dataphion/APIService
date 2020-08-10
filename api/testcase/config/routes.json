@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/testcases",
+      "handler": "Testcase.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/testcases/count",
+      "handler": "Testcase.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/testcases/:id",
+      "handler": "Testcase.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/testcases/run",
+      "handler": "Testcase.run",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/testcases/api/Runtest",
+      "handler": "Testcase.runapi",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/testcases",
+      "handler": "Testcase.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/testcases/:id",
+      "handler": "Testcase.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/testcases/:id",
+      "handler": "Testcase.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

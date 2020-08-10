@@ -1,0 +1,60 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/relationgraphs/creates",
+      "handler": "Relationgraph.creates",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/relationgraphs",
+      "handler": "Relationgraph.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/relationgraphs/count",
+      "handler": "Relationgraph.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/relationgraphs/:id",
+      "handler": "Relationgraph.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/relationgraphs",
+      "handler": "Relationgraph.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/relationgraphs/:id",
+      "handler": "Relationgraph.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/relationgraphs/:id",
+      "handler": "Relationgraph.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

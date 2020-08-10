@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "dbregistration",
+  "info": {
+    "name": "dbregistration",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "ip": {
+      "default": "",
+      "type": "string"
+    },
+    "port": {
+      "default": "",
+      "type": "string"
+    },
+    "username": {
+      "default": "",
+      "type": "string"
+    },
+    "password": {
+      "default": "",
+      "type": "password"
+    },
+    "database": {
+      "default": "",
+      "type": "string"
+    },
+    "queue_name": {
+      "default": "",
+      "type": "string"
+    },
+    "database_type": {
+      "default": "",
+      "type": "string"
+    },
+    "datasources": {
+      "collection": "datasources",
+      "via": "dbregistration"
+    },
+    "source_name": {
+      "type": "string"
+    },
+    "environments": {
+      "collection": "environments",
+      "dominant": true,
+      "via": "dbregistrations"
+    },
+    "sourceregistration": {
+      "model": "sourceregistration",
+      "via": "dbregistrations"
+    },
+    "application": {
+      "via": "dbregistrations",
+      "model": "application"
+    }
+  }
+}

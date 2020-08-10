@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "sourceregistrations",
+  "info": {
+    "name": "sourceregistration",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "dbregistrations": {
+      "collection": "dbregistration",
+      "via": "sourceregistration"
+    },
+    "application": {
+      "via": "sourceregistrations",
+      "model": "application"
+    }
+  }
+}

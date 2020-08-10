@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "smtpdetails",
+  "info": {
+    "name": "Smtpdetails"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "hostname": {
+      "type": "string"
+    },
+    "port": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string"
+    },
+    "password": {
+      "type": "password"
+    },
+    "recipients": {
+      "type": "string"
+    },
+    "application": {
+      "model": "application",
+      "via": "smtpdetail"
+    },
+    "user": {
+      "via": "smtpdetail",
+      "plugin": "users-permissions",
+      "model": "user"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "testcase",
+  "info": {
+    "name": "testcase",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "feature": {
+      "model": "feature",
+      "via": "testcases"
+    },
+    "type": {
+      "type": "string"
+    },
+    "flow": {
+      "model": "flow",
+      "via": "testcase"
+    },
+    "description": {
+      "type": "text"
+    },
+    "testcaseexecutions": {
+      "collection": "testcaseexecution",
+      "via": "testcase"
+    },
+    "testcasegroups": {
+      "collection": "testcasegroup",
+      "via": "testcase"
+    },
+    "testcasecomponents": {
+      "collection": "testcasecomponent",
+      "via": "testcase"
+    },
+    "ddt_file": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "application": {
+      "model": "application",
+      "via": "testcases"
+    },
+    "conflict": {
+      "type": "boolean"
+    },
+    "conflict_message": {
+      "type": "text"
+    },
+    "mobile_platform": {
+      "type": "string"
+    },
+    "capabilities": {
+      "type": "json"
+    }
+  }
+}

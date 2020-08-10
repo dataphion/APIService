@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "testcasegroup",
+  "info": {
+    "name": "testcasegroup",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "testcasecomponents": {
+      "via": "testcasegroup",
+      "collection": "testcasecomponent"
+    },
+    "application": {
+      "via": "testcasegroups",
+      "model": "application"
+    },
+    "testcase": {
+      "via": "testcasegroups",
+      "collection": "testcase",
+      "dominant": true
+    }
+  }
+}

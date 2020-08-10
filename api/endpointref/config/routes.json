@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/endpointrefs",
+      "handler": "Endpointref.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/endpointrefs/count",
+      "handler": "Endpointref.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/endpointrefs/:id",
+      "handler": "Endpointref.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/endpointrefs",
+      "handler": "Endpointref.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/endpointrefs/:id",
+      "handler": "Endpointref.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/endpointrefs/:id",
+      "handler": "Endpointref.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

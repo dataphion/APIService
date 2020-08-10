@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "relationgraphs",
+  "info": {
+    "name": "relationgraph",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "source": {
+      "type": "string"
+    },
+    "destination": {
+      "type": "string"
+    },
+    "node_name": {
+      "type": "string"
+    },
+    "node_request": {
+      "type": "string"
+    },
+    "data_key": {
+      "type": "string"
+    },
+    "source_label": {
+      "type": "string"
+    },
+    "destination_label": {
+      "type": "string"
+    },
+    "application": {
+      "model": "application",
+      "via": "relationgraphs"
+    },
+    "destination_method": {
+      "type": "string"
+    },
+    "source_method": {
+      "type": "string"
+    }
+  }
+}

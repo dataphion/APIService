@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "feature",
+  "info": {
+    "name": "feature",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "application": {
+      "via": "features",
+      "model": "application"
+    },
+    "testcases": {
+      "via": "feature",
+      "collection": "testcase"
+    }
+  }
+}

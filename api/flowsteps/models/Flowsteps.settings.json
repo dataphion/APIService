@@ -1,0 +1,73 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "flowsteps",
+  "info": {
+    "name": "flowsteps",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "node_id": {
+      "type": "string"
+    },
+    "status_code": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "string"
+    },
+    "response": {
+      "type": "json"
+    },
+    "source_result": {
+      "type": "text"
+    },
+    "pending": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "request": {
+      "type": "json"
+    },
+    "conditions_result": {
+      "type": "json"
+    },
+    "testcaseexecution": {
+      "model": "testcaseexecution",
+      "via": "flowsteps"
+    },
+    "action": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "status": {
+      "type": "string"
+    },
+    "url": {
+      "type": "text"
+    },
+    "objectrepository": {
+      "via": "flowsteps",
+      "model": "objectrepository"
+    },
+    "error_view_id": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "error_log": {
+      "type": "string"
+    },
+    "index": {
+      "type": "integer"
+    }
+  }
+}

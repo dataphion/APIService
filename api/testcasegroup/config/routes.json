@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/testcasegroups",
+      "handler": "Testcasegroup.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/testcasegroups/count",
+      "handler": "Testcasegroup.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/testcasegroups/:id",
+      "handler": "Testcasegroup.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/testcasegroups",
+      "handler": "Testcasegroup.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/testcasegroups/:id",
+      "handler": "Testcasegroup.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/testcasegroups/:id",
+      "handler": "Testcasegroup.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

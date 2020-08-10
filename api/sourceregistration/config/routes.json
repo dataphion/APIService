@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/sourceregistrations",
+      "handler": "Sourceregistration.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/sourceregistrations/count",
+      "handler": "Sourceregistration.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/sourceregistrations/:id",
+      "handler": "Sourceregistration.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/sourceregistrations",
+      "handler": "Sourceregistration.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/sourceregistrations/:id",
+      "handler": "Sourceregistration.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/sourceregistrations/:id",
+      "handler": "Sourceregistration.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

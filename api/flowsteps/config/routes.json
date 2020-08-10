@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/flowsteps",
+      "handler": "Flowsteps.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/flowsteps/count",
+      "handler": "Flowsteps.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/flowsteps/:id",
+      "handler": "Flowsteps.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/flowsteps",
+      "handler": "Flowsteps.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/flowsteps/:id",
+      "handler": "Flowsteps.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/flowsteps/:id",
+      "handler": "Flowsteps.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

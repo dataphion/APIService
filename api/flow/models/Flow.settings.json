@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "flow",
+  "info": {
+    "name": "flow",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "graph_json": {
+      "type": "json"
+    },
+    "graph_xml": {
+      "type": "text"
+    },
+    "response_json": {
+      "type": "json"
+    },
+    "endpoints": {
+      "collection": "endpoints",
+      "via": "flows"
+    },
+    "testcase": {
+      "via": "flow",
+      "model": "testcase"
+    }
+  }
+}

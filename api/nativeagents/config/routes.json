@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/nativeagents",
+      "handler": "Nativeagents.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/nativeagents/count",
+      "handler": "Nativeagents.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/nativeagents/:id",
+      "handler": "Nativeagents.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/nativeagents",
+      "handler": "Nativeagents.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/nativeagents/:id",
+      "handler": "Nativeagents.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/nativeagents/:id",
+      "handler": "Nativeagents.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

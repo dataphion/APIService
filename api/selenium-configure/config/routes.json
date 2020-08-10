@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/selenium-configures",
+      "handler": "selenium-configure.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/selenium-configures/count",
+      "handler": "selenium-configure.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/selenium-configures/:id",
+      "handler": "selenium-configure.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/selenium-configures",
+      "handler": "selenium-configure.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/selenium-configures/:id",
+      "handler": "selenium-configure.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/selenium-configures/:id",
+      "handler": "selenium-configure.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

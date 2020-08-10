@@ -1,0 +1,24 @@
+{
+  "connection": "default",
+  "collectionName": "feedback",
+  "info": {
+    "name": "feedback",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "attach_screenshot": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    }
+  }
+}

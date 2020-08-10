@@ -1,0 +1,34 @@
+{
+  "connection": "default",
+  "collectionName": "organization",
+  "info": {
+    "name": "organization",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "fullname": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "organization_name": {
+      "type": "string"
+    },
+    "account_type": {
+      "type": "string"
+    },
+    "license_type": {
+      "type": "string"
+    },
+    "address": {
+      "type": "text"
+    },
+    "billing_address": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "connection": "default",
+  "collectionName": "endpointref",
+  "info": {
+    "name": "endpointref",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "ref_name": {
+      "type": "string"
+    },
+    "structure": {
+      "type": "json"
+    },
+    "type": {
+      "type": "string"
+    },
+    "endpoint": {
+      "model": "endpoints",
+      "via": "endpointrefs"
+    }
+  }
+}

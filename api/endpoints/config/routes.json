@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/endpoints",
+      "handler": "Endpoints.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/endpoints/count",
+      "handler": "Endpoints.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/endpoints/:id",
+      "handler": "Endpoints.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/endpoints",
+      "handler": "Endpoints.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/endpoints/:id",
+      "handler": "Endpoints.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/endpoints/:id",
+      "handler": "Endpoints.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

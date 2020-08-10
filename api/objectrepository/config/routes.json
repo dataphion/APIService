@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/objectrepositories",
+      "handler": "Objectrepository.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/objectrepositories/count",
+      "handler": "Objectrepository.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/objectrepositories/:id",
+      "handler": "Objectrepository.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/objectrepositories",
+      "handler": "Objectrepository.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/objectrepositories/:id",
+      "handler": "Objectrepository.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/objectrepositories/:id",
+      "handler": "Objectrepository.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

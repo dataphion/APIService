@@ -1,0 +1,29 @@
+{
+  "connection": "default",
+  "collectionName": "datasource",
+  "info": {
+    "name": "datasources",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "default": "",
+      "type": "string"
+    },
+    "query": {
+      "default": "",
+      "type": "text"
+    },
+    "test_response": {
+      "default": "",
+      "type": "json"
+    },
+    "dbregistration": {
+      "model": "dbregistration",
+      "via": "datasources"
+    }
+  }
+}

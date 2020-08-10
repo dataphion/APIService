@@ -1,0 +1,24 @@
+{
+  "connection": "default",
+  "collectionName": "nativeagents",
+  "info": {
+    "name": "nativeagents",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "os": {
+      "type": "string"
+    },
+    "ip": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    }
+  }
+}

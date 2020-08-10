@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/healedcomponents",
+      "handler": "Healedcomponent.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/healedcomponents/count",
+      "handler": "Healedcomponent.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/healedcomponents/:id",
+      "handler": "Healedcomponent.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/healedcomponents",
+      "handler": "Healedcomponent.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/healedcomponents/:id",
+      "handler": "Healedcomponent.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/healedcomponents/:id",
+      "handler": "Healedcomponent.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

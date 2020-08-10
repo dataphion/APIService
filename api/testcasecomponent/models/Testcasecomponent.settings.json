@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "testcasecomponent",
+  "info": {
+    "name": "testcasecomponent",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "type": {
+      "type": "string"
+    },
+    "group_name": {
+      "type": "string"
+    },
+    "related_object_id": {
+      "type": "string"
+    },
+    "testcasegroup": {
+      "model": "testcasegroup",
+      "via": "testcasecomponents"
+    },
+    "devicetype": {
+      "model": "devicetype",
+      "via": "testcasecomponents"
+    },
+    "objectrepository": {
+      "via": "testcasecomponents",
+      "model": "objectrepository"
+    },
+    "testcase": {
+      "via": "testcasecomponents",
+      "model": "testcase"
+    },
+    "sequence_number": {
+      "type": "decimal"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "testsuite",
+  "info": {
+    "name": "testsuites",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "suite_name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "sequence": {
+      "type": "json"
+    },
+    "testsessionexecutions": {
+      "via": "testsuite",
+      "collection": "testsessionexecution"
+    },
+    "application": {
+      "via": "testsuites",
+      "model": "application"
+    }
+  }
+}

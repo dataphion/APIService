@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "devicetypes",
+  "info": {
+    "name": "devicetype",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "type": {
+      "type": "string"
+    },
+    "testcasecomponents": {
+      "via": "devicetype",
+      "collection": "testcasecomponent"
+    }
+  }
+}

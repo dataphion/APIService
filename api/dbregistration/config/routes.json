@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/dbregistrations/check",
+      "handler": "Dbregistration.check",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/dbregistrations/execute",
+      "handler": "Dbregistration.execute",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/dbregistrations",
+      "handler": "Dbregistration.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/dbregistrations/count",
+      "handler": "Dbregistration.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/dbregistrations/:id",
+      "handler": "Dbregistration.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/dbregistrations",
+      "handler": "Dbregistration.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/dbregistrations/:id",
+      "handler": "Dbregistration.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/dbregistrations/:id",
+      "handler": "Dbregistration.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

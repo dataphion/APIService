@@ -1,0 +1,19 @@
+{
+  "connection": "default",
+  "collectionName": "testrunresult",
+  "info": {
+    "name": "testrunresults",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "log": {
+      "type": "json"
+    },
+    "status": {
+      "type": "string"
+    }
+  }
+}
