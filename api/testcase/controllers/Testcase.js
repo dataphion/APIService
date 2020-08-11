@@ -55,6 +55,16 @@ module.exports = {
   run: async (ctx) => {
     console.log("inside the run function");
 
+    const testcase_data = await strapi.services.testcase.findOne({
+      id: ctx.request.body.testcaseid,
+    });
+    console.log(testcase_data);
+    const selenium_configure = await strapi.services["selenium-configure"].findOne({
+      application: testcase_data.application.id,
+    });
+    console.log(selenium_configure);
+    const protractor_host = `http://${selenium_configure.host}:${selenium_configure.port}/wd/hub`;
+
  //   const cmd = `export TESTCASE_ID="${ctx.request.body.testcaseid}" && 
  //               export TESTSESSIONEXECUTION_ID="${ctx.request.body.testsessionid}" && 
  //               export ENVIRONMENT_ID="${ctx.request.body.environment_id}" &&
@@ -71,7 +81,7 @@ module.exports = {
                 export BROWSER_NAME="${ctx.request.body.browser}" &&
                 export STRAPI_HOST="${strapi.config.get("server.strapi_host", "http://localhost:1337")}" &&
                 export VISION_API_HOST="${strapi.config.get("server.vision_api_host", "")}" &&
-                export PROTRACTOR_HOST="${ctx.request.body.protractor_host}" &&
+                export PROTRACTOR_HOST="${protractor_host}" &&
                 export IMG_PATH="${strapi.config.get("server.img_path", "")}" &&
                 export ERR_IMG_PATH="${strapi.config.get("server.err_img_path", "")}" &&
                 ${strapi.config.get("server.protractor_path", "/usr/bin/protractor")} ${strapi.config.get("server.executor_path", "/usr/src/dataphion/ai_testing")}/executor/conf.js`;

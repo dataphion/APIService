@@ -11,9 +11,7 @@ module.exports = {
   swagger: async ctx => {
     var SwaggerParser = require("swagger-parser");
     var parser = new SwaggerParser();
-    var bodyData = ctx.request.body;
-    console.log("bodyData ----->", bodyData);
-    
+    var bodyData = ctx.request.body;    
 
     let addIfExists = function(out, k1, k2, inp) {
       if (k2 in inp) {
@@ -27,7 +25,6 @@ module.exports = {
     return parser.bundle("http://localhost:1337"+bodyData.swagger_url).then(
       async function(api, err) {
         console.log(err);
-	console.log("api data --->", api)
         let host_url;
         if (api["host"]) {
           host_url = api["host"];
@@ -44,8 +41,8 @@ module.exports = {
         for (const ep of Object.keys(api.paths)) {
           for (const method of Object.keys(api.paths[ep])) {
             let obj = api.paths[ep][method];
-            console.log("------method-------");
-            console.log(method);
+            // console.log("------method-------");
+            // console.log(method);
 
             let resp = {};
             resp = addIfExists(resp, "tags", "tags", obj);
@@ -140,11 +137,10 @@ module.exports = {
 
             if (responseRefs.length > 0) {
               // console.log(responseRefs)
-              console.log("------creating endpoints-----");
-              console.log(resp);
+              // console.log("------creating endpoints-----");
+              // console.log(resp);
               
               endpointId = await strapi.services.endpoints.create(resp);
-              console.log("endpoint id --->", endpointId);
               
               for (let responseRef of responseRefs) {
                 // console.log(responseRef)
@@ -170,8 +166,8 @@ module.exports = {
                     id: endpointId.id
                   }
                 };
-                console.log("-------endpointref data----");
-                console.log(endResp);
+                // console.log("-------endpointref data----");
+                // console.log(endResp);
                 
                 strapi.services.endpointref.create(endResp);
               }
@@ -180,8 +176,6 @@ module.exports = {
             if (endpointId == null) {
               endpointId = await strapi.services.endpoints.create(resp);
             }
-
-            console.log("storing paramters");
             
             if (parameterRef) {
               let structure;
@@ -229,13 +223,11 @@ module.exports = {
         const endpointpack = await strapi.services.endpointpack.findOne({
           id: id
         });
-        console.log(endpointpack.swagger_url);
         let return_json = {}
         let data = await parser
           .bundle("http://localhost:1337"+endpointpack.swagger_url)
           .then(
             async function(oldapi, err) {
-              console.log("-----------------------------------------");
 
               newapi = await $RefParser.dereference(newapi);
               // console.log(util.inspect(newapi, false, null));
@@ -265,9 +257,6 @@ module.exports = {
                   if (difference.path.length > (index + 2)) {
                     
                   }
-
-                  console.log(difference.path.length);
-                  console.log(index);
 
                   ///change in ednpoint method items
                   if (difference.path.length > 3) {
@@ -470,18 +459,15 @@ module.exports = {
 
     try {
       var bodyData = ctx.request.body;
-      console.log(bodyData);
       for (const key in bodyData.endpoints) {
         for (const diffs of bodyData.endpoints[key]) {
           for (const endpoint of diffs.endpoints) {
-            console.log(endpoint.id);
             let request_data = {
               conflict: true,
               conflict_message: JSON.stringify(diffs.difference)
             };
             await strapi.services.endpoints.update({ id: endpoint.id }, request_data);
             for (const flow of endpoint.flows) {
-              console.log(flow);
               await strapi.services.testcase.update({ id: flow.testcase.id }, request_data);
             }
           }
