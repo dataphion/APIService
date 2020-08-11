@@ -36,6 +36,10 @@ RUN ls
 RUN npm install
 RUN npm install -g protractor
 
+RUN mkdir -p /opt/images
+WORKDIR /opt
+RUN ln -s /opt/images/ p_images
+
 RUN mkdir /srv/api && chown 1000:1000 -R /srv/api
 WORKDIR /srv/api
 VOLUME /srv/api
@@ -45,9 +49,6 @@ RUN ["chmod", "+x", "/usr/local/bin/docker-entrypoint.sh"]
 
 
 # Portal
-RUN mkdir -p /opt/images
-RUN ln -s /opt/images/ p_images
-
 RUN \
     apt-get update && \
     apt-get install -y nginx && \
@@ -63,5 +64,7 @@ ENV NODE_ENV production
 EXPOSE 80
 EXPOSE 443
 EXPOSE 1337
+
+ENTRYPOINT [ "docker-entrypoint.sh" ]
 
 CMD ["startup.sh"]
