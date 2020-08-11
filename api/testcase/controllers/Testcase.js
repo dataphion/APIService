@@ -72,7 +72,7 @@ module.exports = {
                 export STRAPI_HOST="${strapi.config.get("server.strapi_host", "http://localhost:1337")}" &&
                 export VISION_API_HOST="${strapi.config.get("server.vision_api_host", "")}" &&
                 export PROTRACTOR_HOST="${ctx.request.body.protractor_host}" &&
-                ${strapi.config.get("server.protractor_path", "/usr/bin/protractor")} ${strapi.config.get("server.executor_path", "/usr/src/dataphion/ai_testing")}/executor/conf.js`;
+                ${strapi.config.get("server.protractor_path", "/usr/bin/protractor")} ${strapi.config.get("server.executor_path", "/usr/src/dataphion/ai_testing")}/conf.js`;
 	  console.log(cmd);
 
     if (ctx.request.body.testcaseid && ctx.request.body.testsessionid) {
