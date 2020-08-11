@@ -28,8 +28,8 @@ RUN npm run build
 
 FROM strapi/base
 
-RUN mkdir /srv/FlowExecutor
-WORKDIR /srv/FlowExecutor
+RUN mkdir /srv/executor
+WORKDIR /srv/executor
 
 COPY ./FlowExecutor .
 RUN ls
@@ -40,8 +40,8 @@ RUN mkdir /srv/api && chown 1000:1000 -R /srv/api
 WORKDIR /srv/api
 VOLUME /srv/api
 
-# COPY ./api/docker-entrypoint.sh /usr/local/bin/
-# RUN ["chmod", "+x", "/usr/local/bin/docker-entrypoint.sh"]
+COPY ./APIService/docker-entrypoint.sh /usr/local/bin/
+RUN ["chmod", "+x", "/usr/local/bin/docker-entrypoint.sh"]
 
 
 # Portal
