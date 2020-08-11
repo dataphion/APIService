@@ -31,6 +31,10 @@ module.exports = () => {
           console.log("I received ", data);
         });
         socket.on("ui_execution", function (data) {
+          console.log("RTENGINE : Testcase playback started");
+          console.log("Emitting event on -> ")
+          console.log(data.testcase_id + "_play_back");
+          console.log("--------------------------------");
           socket.broadcast.emit(data.testcase_id + "_play_back", data);
           console.log("I received ", data);
         });
@@ -168,7 +172,7 @@ const checkAdmin = async (axios) => {
         "server.admin_email",
         "admin@easelqa.com"
       ),
-      password: strapi.config.get("server.admin_password", "easelqa@123"),
+      password: strapi.config.get("server.admin_password", "Easelqa@123"),
     };
     const checkAdmin = await axios.post(
       strapi.config.get(
@@ -196,7 +200,7 @@ const registerAdmin = async (axios) => {
         "server.admin_email",
         "admin@easelqa.com"
       ),
-      password: strapi.config.get("server.admin_password", "easelqa@123"),
+      password: strapi.config.get("server.admin_password", "Easelqa@123"),
     };
     const createAdmin = await axios.post(
       strapi.config.get(

@@ -22,7 +22,7 @@ module.exports = ({ env }) => ({
   admin_firstname: env("STRAPI_ADMIN_FIRSTNAME", "EASEL"),
   admin_lastname: env("STRAPI_ADMIN_LASTNAME", "QA"),
   admin_email: env("STRAPI_ADMIN_EMAIL", "admin@easelqa.com"),
-  admin_password: env("STRAPI_ADMIN_PASSWORD", "easelqa@123"),
+  admin_password: env("STRAPI_ADMIN_PASSWORD", "Easelqa@123"),
   admin_login_url: env("STRAPI_ADMIN_LOGIN_URL", "http://localhost:1337/admin/login"),
   admin_register_url: env("STRAPI_ADMIN_REGISTER_URL", "http://localhost:1337/admin/register-admin"),
   role_public_url: env("STRAPI_ROLE_PUBLIC_URL", "http://localhost:1337/users-permissions/roles/2"),
