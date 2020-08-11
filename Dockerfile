@@ -66,5 +66,4 @@ EXPOSE 443
 EXPOSE 1337
 
 ENTRYPOINT [ "docker-entrypoint.sh" ]
-
 CMD ["startup.sh"]

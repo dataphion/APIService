@@ -166,9 +166,9 @@ const checkAdmin = async (axios) => {
     const loginBody = {
       email: strapi.config.get(
         "server.admin_email",
-        "urvesh.dungrani@dataphion.com"
+        "admin@easelqa.com"
       ),
-      password: strapi.config.get("server.admin_password", "Aitester@123"),
+      password: strapi.config.get("server.admin_password", "easelqa@123"),
     };
     const checkAdmin = await axios.post(
       strapi.config.get(
@@ -194,9 +194,9 @@ const registerAdmin = async (axios) => {
       lastname: strapi.config.get("server.admin_lastname", "QA"),
       email: strapi.config.get(
         "server.admin_email",
-        "urvesh.dungrani@dataphion.com"
+        "admin@easelqa.com"
       ),
-      password: strapi.config.get("server.admin_password", "Aitester@123"),
+      password: strapi.config.get("server.admin_password", "easelqa@123"),
     };
     const createAdmin = await axios.post(
       strapi.config.get(

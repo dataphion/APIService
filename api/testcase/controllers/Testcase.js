@@ -84,7 +84,7 @@ module.exports = {
                 export PROTRACTOR_HOST="${protractor_host}" &&
                 export IMG_PATH="${strapi.config.get("server.img_path", "")}" &&
                 export ERR_IMG_PATH="${strapi.config.get("server.err_img_path", "")}" &&
-                ${strapi.config.get("server.protractor_path", "/usr/bin/protractor")} ${strapi.config.get("server.executor_path", "/usr/src/dataphion/ai_testing")}/executor/conf.js`;
+                ${strapi.config.get("server.protractor_path", "/usr/bin/protractor")} ${strapi.config.get("server.executor_path", "/usr/src/dataphion/ai_testing")}/conf.js`;
 	  console.log(cmd);
 
     if (ctx.request.body.testcaseid && ctx.request.body.testsessionid) {
