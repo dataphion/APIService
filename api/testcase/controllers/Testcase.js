@@ -72,6 +72,8 @@ module.exports = {
                 export STRAPI_HOST="${strapi.config.get("server.strapi_host", "http://localhost:1337")}" &&
                 export VISION_API_HOST="${strapi.config.get("server.vision_api_host", "")}" &&
                 export PROTRACTOR_HOST="${ctx.request.body.protractor_host}" &&
+                export IMG_PATH="${strapi.config.get("server.img_path", "")}" &&
+                export ERR_IMG_PATH="${strapi.config.get("server.err_img_path", "")}" &&
                 ${strapi.config.get("server.protractor_path", "/usr/bin/protractor")} ${strapi.config.get("server.executor_path", "/usr/src/dataphion/ai_testing")}/conf.js`;
 	  console.log(cmd);
 

@@ -9,10 +9,12 @@ module.exports = ({ env }) => ({
   rmq: env("RMQ_HOST", "amqp://localhost"),
   rmq_queue: env("RMQ_QUEUE_NAME", "highlight_queue"),
   strapi_host: env("STRAPI_HOST", "http://localhost:1337"),
-  vision_api_host: env("API_HOST", ""),
+  vision_api_host: env("VISION_API_HOST", "http://localhost:9502/vision/api"),
   protractor_host: env("PROTRACTOR_HOST", ""),
   protractor_path: env("PROTRACTOR_PATH", "/usr/bin/protractor"),
   executor_path: env("EXECUTOR_PATH", "/usr/src/dataphion/ai_testing"),
+  img_path: env("IMG_PATH", "/usr/src/dataphion/ai_testing"),
+  err_img_path: env("ERR_IMG_PATH", "/usr/src/dataphion/ai_testing"),
   testdecider: "testdecider",
   decider: "decider",
 
