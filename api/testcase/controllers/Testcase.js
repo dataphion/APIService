@@ -9,22 +9,16 @@ const { sanitizeEntity } = require("strapi-utils");
  */
 
 module.exports = {
-  delete: async (ctx) => {
+  delete: async ctx => {
     // console.log("-------delete--------");
 
     // console.log(ctx);
     // console.log(ctx.params);
-    const response = await strapi
-      .query("testcase")
-      .findOne({ id: ctx.params.id });
+    const response = await strapi.query("testcase").findOne({ id: ctx.params.id });
     // console.log(response);
     for (const data of response.testcasecomponents) {
-      const tcResp = await strapi
-        .query("testcasecomponent")
-        .delete({ id: data.id });
-      await strapi
-        .query("objectrepository")
-        .delete({ id: tcResp.objectrepository.id });
+      const tcResp = await strapi.query("testcasecomponent").delete({ id: data.id });
+      await strapi.query("objectrepository").delete({ id: tcResp.objectrepository.id });
     }
     // for (const data1 of response.testcaseexecutions) {
     //   const tscResp = await strapi
@@ -52,30 +46,30 @@ module.exports = {
     const entity = await strapi.services.testcase.delete(ctx.params);
     return sanitizeEntity(entity, { model: strapi.models.testcase });
   },
-  run: async (ctx) => {
+  run: async ctx => {
     console.log("inside the run function");
 
     const testcase_data = await strapi.services.testcase.findOne({
-      id: ctx.request.body.testcaseid,
+      id: ctx.request.body.testcaseid
     });
     console.log(testcase_data);
     const selenium_configure = await strapi.services["selenium-configure"].findOne({
-      application: testcase_data.application.id,
+      application: testcase_data.application.id
     });
     console.log(selenium_configure);
     const protractor_host = `http://${selenium_configure.host}:${selenium_configure.port}/wd/hub`;
 
- //   const cmd = `export TESTCASE_ID="${ctx.request.body.testcaseid}" && 
- //               export TESTSESSIONEXECUTION_ID="${ctx.request.body.testsessionid}" && 
- //               export ENVIRONMENT_ID="${ctx.request.body.environment_id}" &&
- //               export BROWSER_NAME="${ctx.request.body.browser}" &&
-//                export STRAPI_HOST="${strapi.config.environments.production.strapi_host}" && 
-//                export VISION_API_HOST="${strapi.config.environments.production.vision_api_host}" && 
-//                export PROTRACTOR_HOST="${ctx.request.body.protractor_host}" && 
-//                export PROTRACTOR_PATH="${strapi.config.environments.production.protractor_path}" && 
-//                ${strapi.config.environments.production.protractor_path} ${strapi.config.environments.production.executor_path}/executor/conf.js`;
-  
-	      const cmd = `export TESTCASE_ID="${ctx.request.body.testcaseid}" &&
+    //   const cmd = `export TESTCASE_ID="${ctx.request.body.testcaseid}" &&
+    //               export TESTSESSIONEXECUTION_ID="${ctx.request.body.testsessionid}" &&
+    //               export ENVIRONMENT_ID="${ctx.request.body.environment_id}" &&
+    //               export BROWSER_NAME="${ctx.request.body.browser}" &&
+    //                export STRAPI_HOST="${strapi.config.environments.production.strapi_host}" &&
+    //                export VISION_API_HOST="${strapi.config.environments.production.vision_api_host}" &&
+    //                export PROTRACTOR_HOST="${ctx.request.body.protractor_host}" &&
+    //                export PROTRACTOR_PATH="${strapi.config.environments.production.protractor_path}" &&
+    //                ${strapi.config.environments.production.protractor_path} ${strapi.config.environments.production.executor_path}/executor/conf.js`;
+
+    const cmd = `export TESTCASE_ID="${ctx.request.body.testcaseid}" &&
                 export TESTSESSIONEXECUTION_ID="${ctx.request.body.testsessionid}" &&
                 export ENVIRONMENT_ID="${ctx.request.body.environment_id}" &&
                 export BROWSER_NAME="${ctx.request.body.browser}" &&
@@ -84,8 +78,8 @@ module.exports = {
                 export PROTRACTOR_HOST="${protractor_host}" &&
                 export IMG_PATH="${strapi.config.get("server.img_path", "")}" &&
                 export ERR_IMG_PATH="${strapi.config.get("server.err_img_path", "")}" &&
-                ${strapi.config.get("server.protractor_path", "/usr/bin/protractor")} ${strapi.config.get("server.executor_path", "/usr/src/dataphion/ai_testing")}/conf.js`;
-	  console.log(cmd);
+                ${strapi.config.get("server.protractor_path", "/usr/bin/protractor")} ${strapi.config.get("server.executor_path", "/usr/src/dataphion/ai_testing")}/executor/conf.js`;
+    console.log(cmd);
 
     if (ctx.request.body.testcaseid && ctx.request.body.testsessionid) {
       try {
@@ -105,7 +99,7 @@ module.exports = {
       ctx.response.badRequest("invalid query");
     }
   },
-  runapi: async (ctx) => {
+  runapi: async ctx => {
     const args = ctx.request.body;
     let data;
     if ("testsuiteid" in args) {
@@ -114,7 +108,7 @@ module.exports = {
       data = {
         testsuiteid: args["testsuiteid"],
         environment_id: args["environment_id"],
-        browser: args["browser"],
+        browser: args["browser"]
       };
       data = await strapi.services.testcase.sendtoamq(data, true);
     } else {
@@ -123,10 +117,10 @@ module.exports = {
       data = {
         testsessionid: args["testsessionid"],
         testcaseid: args["testcaseid"],
-        environment_id: args["environment_id"],
+        environment_id: args["environment_id"]
       };
       data = await strapi.services.testcase.sendtoamq(data);
     }
     return data;
-  },
+  }
 };
