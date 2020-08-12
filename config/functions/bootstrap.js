@@ -20,19 +20,19 @@ module.exports = () => {
 
       // ============================== SOCKET IO START==============================
       // listen for user connection
-      io.on("connection", (socket) => {
+      io.on("connection", socket => {
         strapi.log.debug("connected");
         // listen for user diconnect
         // _socket = socket;
         // strapi._socket = socket;
-        socket.on("api_execution", function (data) {
+        socket.on("api_execution", function(data) {
           socket.emit("broadcast", data);
           socket.broadcast.emit("broadcast", data);
           console.log("I received ", data);
         });
-        socket.on("ui_execution", function (data) {
+        socket.on("ui_execution", function(data) {
           console.log("RTENGINE : Testcase playback started");
-          console.log("Emitting event on -> ")
+          console.log("Emitting event on -> ");
           console.log(data.testcase_id + "_play_back");
           console.log("--------------------------------");
           socket.broadcast.emit(data.testcase_id + "_play_back", data);
@@ -40,7 +40,7 @@ module.exports = () => {
         });
 
         // ============================== FOR MOBILE TESTCASE ==============================
-        socket.on("connected_desktop_agent", async (data) => {
+        socket.on("connected_desktop_agent", async data => {
           socket.broadcast.emit(`connected_desktop_agent_${data.ip}`, data);
           // const getAgents = await strapi
           //   .query("nativeagents")
@@ -56,50 +56,48 @@ module.exports = () => {
           // }
         });
 
-        socket.on("create_recording_session", (data) => {
+        socket.on("create_recording_session", data => {
           socket.broadcast.emit(`create_recording_session_${data.ip}`, data);
         });
 
-        socket.on("send_created_session_data", (data) => {
+        socket.on("send_created_session_data", data => {
           socket.broadcast.emit(`send_created_session_data_${data.ip}`, data);
         });
 
-        socket.on("REFRESH", (data) => {
+        socket.on("REFRESH", data => {
           socket.broadcast.emit(`REFRESH_${data.ip}`, data);
         });
 
-        socket.on("TAP", (data) => {
+        socket.on("TAP", data => {
           socket.broadcast.emit(`TAP_${data.ip}`, data);
         });
 
-        socket.on("FOCUS", (data) => {
+        socket.on("FOCUS", data => {
           socket.broadcast.emit(`FOCUS_${data.ip}`, data);
         });
 
-        socket.on("SENDKEYS", (data) => {
+        socket.on("SENDKEYS", data => {
           socket.broadcast.emit(`SENDKEYS_${data.ip}`, data);
         });
 
-        socket.on("PLAYBACK", (data) => {
+        socket.on("PLAYBACK", data => {
           socket.broadcast.emit(`PLAYBACK_${data.ip}`, data);
         });
 
         // ============================== END MOBILE TESTCASE ==============================
 
-        socket.on("disconnect", () =>
-          strapi.log.debug("A user disconnected\n")
-        );
+        socket.on("disconnect", () => strapi.log.debug("A user disconnected\n"));
       });
       strapi.io = io; // register socket io inside strapi main object to use it globally anywhere
 
-      strapi.updatePortal = (data) => {
+      strapi.updatePortal = data => {
         // let socketid=Object.keys(io.engine.clients)[1]
         io.emit(data.user_id + "_record", data);
         console.log("SENDING TO " + data.user_id + "\n");
         console.log(data);
         console.log("DATA SENT TO PORTAL FOR RECORD\n");
       };
-      strapi.updatePortalPlayback = (data) => {
+      strapi.updatePortalPlayback = data => {
         // let socketid=Object.keys(io.engine.clients)[1]
 
         io.emit(data.user_id + "_play_back", data);
@@ -115,21 +113,36 @@ module.exports = () => {
 };
 
 // ============================== Functions for AUTO PERMISSIONS SCRIPT START ==============================
-const permissions = async (axios) => {
+const permissions = async axios => {
   try {
     // Check if admin is created or not
     const token = await checkAdmin(axios);
 
+    // update advanced settings
+    let advanced_seetings = {
+      unique_email: true,
+      allow_register: true,
+      email_confirmation: true,
+      email_confirmation_redirection: "http://localhost:4200"
+    };
+    await axios({
+      method: "put",
+      url: strapi.config.get("server.advanced_setting_url", "http://localhost:1337/users-permissions/advanced"),
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      data: advanced_seetings
+    });
+
+    // ---- ADVANCED SETTING UPDATED----------
+
     // Get all schema and permissions
     const getPermission = await axios({
       method: "get",
-      url: strapi.config.get(
-        "server.role_public_url",
-        "http://localhost:1337/users-permissions/roles/2"
-      ),
+      url: strapi.config.get("server.role_public_url", "http://localhost:1337/users-permissions/roles/2"),
       headers: {
-        Authorization: `Bearer ${token}`,
-      },
+        Authorization: `Bearer ${token}`
+      }
     });
     const role = getPermission.data.role;
 
@@ -147,14 +160,11 @@ const permissions = async (axios) => {
     // Enable all necessary permissions.
     await axios({
       method: "put",
-      url: strapi.config.get(
-        "server.role_public_url",
-        "http://localhost:1337/users-permissions/roles/2"
-      ),
+      url: strapi.config.get("server.role_public_url", "http://localhost:1337/users-permissions/roles/2"),
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`
       },
-      data: role,
+      data: role
     });
 
     strapi.log.debug("All permissions given successfully.");
@@ -164,23 +174,14 @@ const permissions = async (axios) => {
   }
 };
 
-const checkAdmin = async (axios) => {
+const checkAdmin = async axios => {
   // Login admin
   try {
     const loginBody = {
-      email: strapi.config.get(
-        "server.admin_email",
-        "admin@easelqa.com"
-      ),
-      password: strapi.config.get("server.admin_password", "Easelqa@123"),
+      email: strapi.config.get("server.admin_email", "admin@easelqa.com"),
+      password: strapi.config.get("server.admin_password", "Easelqa@123")
     };
-    const checkAdmin = await axios.post(
-      strapi.config.get(
-        "server.admin_login_url",
-        "http://localhost:1337/admin/login"
-      ),
-      loginBody
-    );
+    const checkAdmin = await axios.post(strapi.config.get("server.admin_login_url", "http://localhost:1337/admin/login"), loginBody);
     strapi.log.debug("Admin login successfully.");
     return checkAdmin.data.data.token;
   } catch (error) {
@@ -190,25 +191,16 @@ const checkAdmin = async (axios) => {
   }
 };
 
-const registerAdmin = async (axios) => {
+const registerAdmin = async axios => {
   // Register admin
   try {
     const regBody = {
       firstname: strapi.config.get("server.admin_firstname", "EASEL"),
       lastname: strapi.config.get("server.admin_lastname", "QA"),
-      email: strapi.config.get(
-        "server.admin_email",
-        "admin@easelqa.com"
-      ),
-      password: strapi.config.get("server.admin_password", "Easelqa@123"),
+      email: strapi.config.get("server.admin_email", "admin@easelqa.com"),
+      password: strapi.config.get("server.admin_password", "Easelqa@123")
     };
-    const createAdmin = await axios.post(
-      strapi.config.get(
-        "server.admin_register_url",
-        "http://localhost:1337/admin/register-admin"
-      ),
-      regBody
-    );
+    const createAdmin = await axios.post(strapi.config.get("server.admin_register_url", "http://localhost:1337/admin/register-admin"), regBody);
     strapi.log.debug("Admin registered successfully.");
     return createAdmin.data.data.token;
   } catch (error) {

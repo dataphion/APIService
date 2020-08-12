@@ -3,8 +3,8 @@ module.exports = ({ env }) => ({
   port: env.int("PORT", 1337),
   admin: {
     auth: {
-      secret: env("ADMIN_JWT_SECRET", "f472369bd356df6c306df56e309af8eb"),
-    },
+      secret: env("ADMIN_JWT_SECRET", "f472369bd356df6c306df56e309af8eb")
+    }
   },
   rmq: env("RMQ_HOST", "amqp://localhost"),
   rmq_queue: env("RMQ_QUEUE_NAME", "highlight_queue"),
@@ -26,4 +26,5 @@ module.exports = ({ env }) => ({
   admin_login_url: env("STRAPI_ADMIN_LOGIN_URL", "http://localhost:1337/admin/login"),
   admin_register_url: env("STRAPI_ADMIN_REGISTER_URL", "http://localhost:1337/admin/register-admin"),
   role_public_url: env("STRAPI_ROLE_PUBLIC_URL", "http://localhost:1337/users-permissions/roles/2"),
+  advanced_setting_url: env("ADVANCED_SETTING_URL", "http://localhost:1337/users-permissions/advanced")
 });
