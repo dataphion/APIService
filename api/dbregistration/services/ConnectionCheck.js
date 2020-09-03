@@ -16,6 +16,8 @@ module.exports = {
   check: async (data) => {
     try {
       let status = "";
+      let get_offset = null;
+      console.log(data);
 
       if (data.database_type === "mysql") {
         status = await checkMysqlConnection(data);
@@ -31,15 +33,44 @@ module.exports = {
         status = await checkMSSQLConnection(data);
       } else if (data.database_type === "kafka") {
         status = await checkKafkaConnection(data);
+      } else if (data.database_type === "kafkaOoffsetcheck") {
+        get_offset = await getKafkaOffset(data);
       }
 
-      return { status: status };
+      return { status: status, offset_value: get_offset };
     } catch (error) {
       console.error("Error in connection checking");
       console.error(error);
       return { status: "failed", error };
     }
   },
+};
+
+const getKafkaOffset = (creds) => {
+  return new Promise((resolve, reject) => {
+    try {
+      console.log(creds);
+      console.log(" ---------check kafka offset---------------");
+      let host = `${creds.ip}:${creds.port}`;
+      const client = new kafka.KafkaClient({
+        kafkaHost: host,
+      });
+
+      /* Print latest offset. */
+      var offset = new kafka.Offset(client);
+
+      offset.fetch(
+        [{ topic: creds.kafkaTopic, partition: 0, time: -1 }],
+        function (err, data) {
+          var latestOffset = data[creds.kafkaTopic]["0"][0];
+          console.log("Consumer current offset: " + latestOffset);
+          resolve(latestOffset);
+        }
+      );
+    } catch (error) {
+      console.error("Error in kafka Connection", error);
+    }
+  });
 };
 
 /**
@@ -83,7 +114,7 @@ const checkKafkaConnection = (creds) => {
       const client = new kafka.KafkaClient({
         kafkaHost: `${creds.ip}:${creds.port}`,
       });
-      producer = new Producer(client);
+      let producer = new Producer(client);
 
       // console.log(producer);
 
