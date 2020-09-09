@@ -7,6 +7,7 @@ const mongo = require("mongodb").MongoClient;
 const mssql = require("mssql");
 var kafka = require("kafka-node"),
   Producer = kafka.Producer;
+const cassandra = require("cassandra-driver");
 
 /**
  * `ConnectionCheck` service.
@@ -35,6 +36,8 @@ module.exports = {
         status = await checkKafkaConnection(data);
       } else if (data.database_type === "kafkaOoffsetcheck") {
         get_offset = await getKafkaOffset(data);
+      } else if (data.database_type === "cassandra") {
+        status = await checkCassandraConnection(data);
       }
 
       return { status: status, offset_value: get_offset };
@@ -44,6 +47,40 @@ module.exports = {
       return { status: "failed", error };
     }
   },
+};
+
+const checkCassandraConnection = (creds) => {
+  return new Promise((resolve, reject) => {
+    try {
+      console.log(creds);
+
+      const dataCenter = "datacenter1";
+      const authProvider = new cassandra.auth.PlainTextAuthProvider(
+        creds.username,
+        creds.password
+      );
+      let host = `${creds.ip}:${creds.port}`;
+      const contactPoints = [host];
+      const client = new cassandra.Client({
+        contactPoints: contactPoints,
+        authProvider: authProvider,
+        keyspace: creds.database,
+        localDataCenter: dataCenter,
+      });
+
+      client.connect((err) => {
+        if (err) {
+          reject(err.toString());
+        } else {
+          resolve("success");
+        }
+      });
+    } catch (error) {
+      console.error("Error in cassandra connection");
+      console.error(error);
+      reject(error);
+    }
+  });
 };
 
 const getKafkaOffset = (creds) => {

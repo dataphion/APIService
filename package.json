@@ -15,6 +15,7 @@
     "amqplib": "0.5.3",
     "async-redis": "^1.1.7",
     "axios": "^0.19.2",
+    "cassandra-driver": "^4.6.0",
     "deep-diff": "^1.0.2",
     "json-schema-ref-parser": "^7.1.1",
     "kafka-node": "^5.0.0",
