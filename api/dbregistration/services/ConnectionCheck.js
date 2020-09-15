@@ -165,7 +165,7 @@ const checkKafkaConnection = (creds) => {
         reject(err);
       });
     } catch (error) {
-      console.error("Error in checkOracleConnection");
+      console.error("Error in kafka connection");
       console.error(error);
       reject(error);
     }

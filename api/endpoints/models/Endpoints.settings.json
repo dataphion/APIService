@@ -1,4 +1,5 @@
 {
+  "kind": "collectionType",
   "connection": "default",
   "collectionName": "endpoints",
   "info": {
@@ -10,39 +11,30 @@
   },
   "attributes": {
     "endpoint": {
-      "default": "",
       "type": "string"
     },
     "method": {
-      "default": "",
       "type": "string"
     },
     "description": {
-      "default": "",
       "type": "text"
     },
     "responses": {
-      "default": "",
       "type": "json"
     },
     "tags": {
-      "default": "",
       "type": "json"
     },
     "consumes": {
-      "default": "",
       "type": "json"
     },
     "produces": {
-      "default": "",
       "type": "json"
     },
     "summary": {
-      "default": "",
       "type": "text"
     },
     "parameters": {
-      "default": "",
       "type": "json"
     },
     "endpointrefs": {
@@ -63,6 +55,12 @@
     },
     "conflict_message": {
       "type": "text"
+    },
+    "headers": {
+      "type": "json"
+    },
+    "requestbody": {
+      "type": "json"
     }
   }
 }

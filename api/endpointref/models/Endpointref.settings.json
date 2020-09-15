@@ -1,4 +1,5 @@
 {
+  "kind": "collectionType",
   "connection": "default",
   "collectionName": "endpointref",
   "info": {
@@ -19,8 +20,8 @@
       "type": "string"
     },
     "endpoint": {
-      "model": "endpoints",
-      "via": "endpointrefs"
+      "via": "endpointrefs",
+      "model": "endpoints"
     }
   }
 }
