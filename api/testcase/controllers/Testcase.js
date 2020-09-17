@@ -72,6 +72,7 @@ module.exports = {
     const cmd = `export TESTCASE_ID="${ctx.request.body.testcaseid}" &&
                 export TESTSESSIONEXECUTION_ID="${ctx.request.body.testsessionid}" &&
                 export TESTCASEEXECUTION_ID="${ctx.request.body.testcaseexecutionid}" &&
+                export API_TESTCASE_ID="${ctx.request.body.api_testcase_id}" &&
                 export NODE_ID="${ctx.request.body.node_id}" &&
                 export ENVIRONMENT_ID="${ctx.request.body.environment_id}" &&
                 export BROWSER_NAME="${ctx.request.body.browser}" &&
