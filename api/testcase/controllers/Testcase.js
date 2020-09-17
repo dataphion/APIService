@@ -71,6 +71,8 @@ module.exports = {
 
     const cmd = `export TESTCASE_ID="${ctx.request.body.testcaseid}" &&
                 export TESTSESSIONEXECUTION_ID="${ctx.request.body.testsessionid}" &&
+                export TESTCASEEXECUTION_ID="${ctx.request.body.testcaseexecutionid}" &&
+                export NODE_ID="${ctx.request.body.node_id}" &&
                 export ENVIRONMENT_ID="${ctx.request.body.environment_id}" &&
                 export BROWSER_NAME="${ctx.request.body.browser}" &&
                 export STRAPI_HOST="${strapi.config.get("server.strapi_host", "http://localhost:1337")}" &&
