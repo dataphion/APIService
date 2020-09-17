@@ -23,8 +23,8 @@
       "type": "string"
     },
     "endpoints": {
-      "collection": "endpoints",
-      "via": "endpointpack"
+      "via": "endpointpack",
+      "collection": "endpoints"
     },
     "application": {
       "via": "endpointpacks",

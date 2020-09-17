@@ -20,8 +20,8 @@
       "type": "json"
     },
     "endpoints": {
-      "collection": "endpoints",
-      "via": "flows"
+      "via": "flows",
+      "collection": "endpoints"
     },
     "testcase": {
       "via": "flow",

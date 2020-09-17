@@ -7,17 +7,27 @@
       "config": {
         "policies": []
       }
-    },{
+    },
+    {
       "method": "POST",
       "path": "/applications/swaggerupdate",
       "handler": "Application.swaggerupdate",
       "config": {
         "policies": []
       }
-    },{
+    },
+    {
       "method": "POST",
       "path": "/applications/swaggerconfirm",
       "handler": "Application.swaggerconfirm",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/applications/createcollection",
+      "handler": "Application.createcollection",
       "config": {
         "policies": []
       }
