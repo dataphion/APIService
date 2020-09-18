@@ -3,6 +3,7 @@ const util = require("util");
 const diff = require("deep-diff").diff;
 const fetch = require("node-fetch");
 const $RefParser = require("json-schema-ref-parser");
+const { hasUncaughtExceptionCaptureCallback } = require("process");
 var fs = require("fs"), // needed to read JSON file from disk
   Collection = require("postman-collection").Collection,
   myCollection;
@@ -25,14 +26,26 @@ module.exports = {
       }
       return out;
     };
+    let swagger_url = `http://localhost:1337${bodyData.swagger_url}`;
+    if (bodyData.swagger_url.startsWith("http")) {
+      swagger_url = bodyData.swagger_url;
+    }
 
-    return parser.bundle("http://localhost:1337" + bodyData.swagger_url).then(
+    return parser.bundle(swagger_url).then(
       async function (api, err) {
         console.log("api data --->", api);
         console.log(err);
         let host_url;
         if (api["host"]) {
           host_url = api["host"];
+          if (api["schemes"]) {
+            if (api["schemes"].length > 0) {
+              host_url = `${api["schemes"][0]}://${host_url}`;
+            }
+          }
+          if (api["basePath"]) {
+            host_url = host_url + api["basePath"];
+          }
         } else if (api["servers"][0]["url"]) {
           host_url = api["servers"][0]["url"];
         }
