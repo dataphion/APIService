@@ -8,6 +8,7 @@ const mssql = require("mssql");
 var kafka = require("kafka-node"),
   Producer = kafka.Producer;
 const cassandra = require("cassandra-driver");
+const { Client } = require("pg");
 
 /**
  * `ConnectionCheck` service.
@@ -38,6 +39,8 @@ module.exports = {
         get_offset = await getKafkaOffset(data);
       } else if (data.database_type === "cassandra") {
         status = await checkCassandraConnection(data);
+      } else if (data.database_type === "postgres") {
+        status = await checkPostgresConnection(data);
       }
 
       return { status: status, offset_value: get_offset };
@@ -47,6 +50,33 @@ module.exports = {
       return { status: "failed", error };
     }
   },
+};
+
+const checkPostgresConnection = (creds) => {
+  return new Promise((resolve, reject) => {
+    try {
+      console.log("check postgres connection", creds);
+      const client = new Client({
+        user: creds.username,
+        host: creds.ip,
+        database: creds.database,
+        password: creds.password,
+        port: creds.port,
+      });
+
+      client.connect((err) => {
+        if (err) {
+          reject(err.toString());
+        } else {
+          console.log("success");
+          resolve("success");
+        }
+      });
+    } catch (error) {
+      console.log(error);
+      reject(error);
+    }
+  });
 };
 
 const checkCassandraConnection = (creds) => {
