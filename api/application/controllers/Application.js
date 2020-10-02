@@ -60,7 +60,7 @@ module.exports = {
           for (const method of Object.keys(api.paths[ep])) {
             let obj = api.paths[ep][method];
             // console.log("------method-------");
-            // console.log(method);
+            console.log("============rp---------", ep);
 
             let resp = {};
             resp = addIfExists(resp, "tags", "tags", obj);
@@ -70,6 +70,7 @@ module.exports = {
             resp = addIfExists(resp, "summary", "summary", obj);
             resp = addIfExists(resp, "description", "description", obj);
             resp = addIfExists(resp, "responses", "responses", obj);
+            resp = addIfExists(resp, "headers", "headers", obj);
             resp["endpoint"] = ep;
             resp["method"] = method;
             resp["endpointpack"] = { id: bodyData.endpointpack_id };
@@ -590,7 +591,7 @@ module.exports = {
 
           // add headers if exist
           let header = {};
-          console.log("exist header", items.request.header);
+          console.log("exist header", items);
           if (items.request.header.length > 0) {
             for (const h of items.request.header) {
               header[h["key"]] = h["value"];
