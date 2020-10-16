@@ -9,6 +9,7 @@ var kafka = require("kafka-node"),
   Producer = kafka.Producer;
 const cassandra = require("cassandra-driver");
 const { Client } = require("pg");
+var Imap = require("imap");
 
 /**
  * `ConnectionCheck` service.
@@ -19,6 +20,7 @@ module.exports = {
     try {
       let status = "";
       let get_offset = null;
+      let email_count = null;
       console.log(data);
 
       if (data.database_type === "mysql") {
@@ -41,15 +43,68 @@ module.exports = {
         status = await checkCassandraConnection(data);
       } else if (data.database_type === "postgres") {
         status = await checkPostgresConnection(data);
+      } else if (data.database_type === "checkEmailCount") {
+        email_count = await getEmailCount(data);
       }
 
-      return { status: status, offset_value: get_offset };
+      return {
+        status: status,
+        offset_value: get_offset,
+        current_email_count: email_count,
+      };
     } catch (error) {
       console.error("Error in connection checking");
       console.error(error);
       return { status: "failed", error };
     }
   },
+};
+
+const getEmailCount = (creds) => {
+  return new Promise((resolve, reject) => {
+    try {
+      console.log("check email counts", creds);
+      let user = creds.email.toString();
+      let password = creds.password.toString();
+      var imap = new Imap({
+        user: user,
+        password: password,
+        host: "imap.gmail.com",
+        port: 993,
+        tls: true,
+        tlsOptions: { rejectUnauthorized: false },
+      });
+
+      imap.once("ready", function () {
+        console.log("connection ready -->");
+        imap.openBox("INBOX", false, function (err, mailBox) {
+          if (err) {
+            console.error("err ---->", err);
+            reject(err);
+          }
+          imap.search(["UNSEEN"], function (err, results) {
+            console.log("unseen emails --->", results.length);
+            imap.end();
+            resolve(results.length);
+          });
+        });
+      });
+
+      imap.once("error", function (err) {
+        console.log("after connection---->", err);
+        reject(err);
+      });
+
+      imap.once("end", function () {
+        console.log("Connection ended");
+      });
+
+      imap.connect();
+    } catch (error) {
+      console.log("error --->", error);
+      reject(error);
+    }
+  });
 };
 
 const checkPostgresConnection = (creds) => {
