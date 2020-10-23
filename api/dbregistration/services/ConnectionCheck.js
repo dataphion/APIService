@@ -63,7 +63,7 @@ module.exports = {
 const getEmailCount = (creds) => {
   return new Promise((resolve, reject) => {
     try {
-      console.log("check email counts", creds);
+      console.log("check email countss", creds);
       let user = creds.email.toString();
       let password = creds.password.toString();
       var imap = new Imap({
