@@ -173,6 +173,9 @@
     },
     "grid_pagination_xpath": {
       "type": "string"
+    },
+    "api_attributes": {
+      "type": "json"
     }
   }
 }
